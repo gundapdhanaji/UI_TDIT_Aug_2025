@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning JavaScript</title>
+    <!-- <script>
+        let dataArr = [10, 20, 30, 40, 50];
+        let dataArr1 = [60, 70, 80, 90, 100];
+        console.log(dataArr.length); // Outputs: 5
+        console.log(dataArr.toString()); // Outputs: "10,20,30,40,50"
+        console.log(typeof dataArr)
+        console.log(dataArr.concat(dataArr1))
+        dataArr.push(60);
+        console.log(dataArr); // Outputs: [10, 20, 30, 40, 50, 60]
+        dataArr.pop(); // Removes the last element
+        console.log(dataArr); // Outputs: [10, 20, 30, 40, 50]
+        dataArr.shift(); // Removes the first element
+        console.log(dataArr); // Outputs: [20, 30, 40, 50]
+        dataArr.unshift(10); // Adds an element at the beginning
+        console.log(dataArr); // Outputs: [10, 20, 30, 40, 50]
+        dataArr.splice(2, 0,110); // Removes 0 element at index 2 and adds 110
+        console.log(dataArr); // Outputs: [10, 20, 110, 30, 40, 50]
+        dataArr.splice(3,1,120); // Removes 1 element at index 3 and adds 120
+        console.log(dataArr); // Outputs: [10, 20, 110, 120, 40, 50]    
+        dataArr.splice(4,2); // Removes 2 elements at index 4
+        console.log(dataArr); // Outputs: [10, 20, 110, 120]
+        dataArr.splice(1,0,100,300,400); // Removes 0 elements at index 1 and adds 200,300,400
+        console.log(dataArr); // Outputs: [10, 100, 300, 400, 20, 110, 120]
+        
+        let dataArr2 = ['Apple', 'Banana', 'Cherry', 'Date','Elephant','Fish','Grapes','Honey','Icecream','Jackfruit','Kiwi','Lemon','Mango','Nuts','Orange','Papaya','Quince','Raspberry','Strawberry','Tomato','Ugli fruit','Vanilla','Watermelon','Xigua','Yam','Zucchini'];
+        dataArr2.sort();
+        console.log(dataArr2);  // Outputs the sorted array in alphabetical order
+        dataArr2.reverse(); 
+        console.log(dataArr2);  // Outputs the sorted array in reverse alphabetical order   
+        dataArr2.splice(5,10); // Removes 10 elements starting from index 5
+        console.log(dataArr2);  // Outputs the modified array after removal
+        dataArr2.splice(2,0,'Blueberry','Cantaloupe'); // Adds 'Blueberry' and 'Cantaloupe' at index 2
+        console.log(dataArr2);  // Outputs the modified array after addition
+        
+        const dataArr3 = [5, 15, 25, 35, 45, 55, 65, 75, 85, 95];
+        const filteredArr = dataArr3.filter(function(value) {
+            return value > 30;
+        });
+        console.log(filteredArr); // Outputs: [35, 45, 55, 65, 75, 85, 95] 
+        dataArr3.forEach(function(value) {
+            console.log(value); // Outputs each value in dataArr3
+        }); 
+        const dataArr4 = dataArr3.map(function(value) {
+            return value * 2;
+        });
+        console.log(dataArr4); // Outputs: [5, 15, 25, 35, 45, 55, 65, 75, 85, 95]
+        // [10, 30, 50, 70, 90, 110, 130, 150, 170, 190]
+
+        console.log(dataArr3.includes(30)); // Outputs: false
+        console.log(dataArr3.includes(35)); // Outputs: true
+       
+        //Array Iteration methods
+        //forEach, map, filter, reduce, some, every
+        let dataArr5 = [1,2,3,4,5,6,7,8,9,10];
+        console.log("using for loop")
+        for(let i=0; i<dataArr5.length; i++){
+            console.log(dataArr5[i]);
+        }
+
+        console.log("using forEach");
+        dataArr5.forEach(function(value,index,arr){
+            console.log(value + " at index " + index + " in array " + arr );
+        })//index and array are optional
+
+        let resultArr = dataArr5.reduce(function(total, value, index, arr){
+            console.log("initial value of total "+total)
+            return total + value;
+        },10); // here 0 is the initial value for total we can set any value
+
+        console.log("Sum of all elements using reduce: " + resultArr);
+
+        console.log("every() and some() method in Example ")
+        //every() and some() mehod examples
+        let testDataArr = [1,2,3,4,5,6,7,8,9,10];
+        let allEven = testDataArr.every(function(value){
+            return value % 2 === 0;
+        });
+        console.log(allEven)
+
+        let testDataArr2 = [1,2,3,4,5,6,7,8,9,10];
+        let someEven = testDataArr2.some(function(value){
+            return value % 2 === 0;
+        })
+        console.log(someEven);
+
+
+
+
+
+
+
+
+
+    </script> -->
+    <!-- <script>
+        //Spread Operator (...)
+        console.log("Spread Operators in JS");
+        let arr1 = [1, 2, 3, 4];
+        let arr2 = [5, 6, 7, 8];
+        arr1.concat(arr2);
+        console.log("Using concat: " + arr1);
+        console.log([...arr1, ...arr2])
+
+        //Math Object in JS
+        console.log("Math Object in JS");
+        //Math.round(), Math.floor(), Math.ceil(), Math.random(), Math.max(), Math.min()
+        console.log("Math.round(4.6): " + Math.round(4.6)); // Outputs: 5
+        console.log("Math.round(4.4): " + Math.round(4.4)); // Outputs: 4
+        console.log("Math.round(4.5): " + Math.round(4.5)); // Outputs: 5        
+        console.log("Math.floor(4.9): " + Math.floor(4.9)); // Outputs: 4
+        console.log("Math.ceil(4.1): " + Math.ceil(4.1)); // Outputs: 5
+        console.log("Math.trunc(4.9): " + Math.trunc(4.9)); // Outputs: 4
+        console.log("In case of negative value floor & trunc for postive values both works similar:");
+
+        console.log("Math.floor(-4.1): " + Math.floor(-4.1)); // Outputs: -5
+        console.log("Math.trunc(-4.9): " + Math.trunc(-4.9)); // Outputs: -4        
+
+        const arr3 = [10, 20, 5, 40, 15, 25, 30, 45, 35, 50];
+
+        console.log("Math.max(...arr3): " + Math.max(...arr3)); // Outputs: 50
+        console.log("Math.min(...arr3): " + Math.min(...arr3)); //
+
+        // Number Data Type Methods
+        const a = 10;
+        const b = 20;
+        console.log(a + b); // Outputs: 30
+        const x = '10';
+        const y = '20';
+        console.log(x + y); // Outputs: '1020' (string concatenation)   
+        console.log("Convert string to Number using Number Object  " + (Number(x) + Number(y)))
+        console.log("Convert string to Number using + Operator  " + ((+x) + (+y)))
+        console.log("Convert string to Number using parseInt()  " + (parseInt(x) + parseInt(y)))
+
+        const i = '10.56';
+        const j = '20.34';
+        console.log("Using parseFloat()   " + (parseFloat(i) + parseFloat(j))) // Outputs: 30.9
+
+        console.log("== Operator using Spread Operator")
+        const data = [1, 2, 3];
+        const data1 = data;
+        const data2 = [...data];
+        console.log(data == data2); // Outputs: false
+        console.log(data == data1); // Outputs: true
+        /*
+        In JavaScript:
+        Arrays are objects
+        When you compare objects (== or ===), JavaScript compares references (memory addresses), not their contents
+        
+        Line-by-line explanation
+        1️⃣ const data = [1, 2, 3];
+        A new array is created in memory.
+        data stores a reference to that array.
+        data  ───►  [1, 2, 3]
+        2️⃣ const data1 = data;
+        No new array is created.
+        data1 points to the same array in memory as data.
+    data   ─┐
+            ├──► [1, 2, 3]
+    data1 ──┘
+
+        3️⃣ const data2 = [...data];
+        The spread operator creates a new array
+        Values are copied, but memory reference is different
+    data   ───► [1, 2, 3]
+`   data2  ───► [1, 2, 3]   (different memory)
+
+    Console outputs explained
+    🔹 console.log(data == data2);
+    data == data2
+Different memory references
+Even though values look the same
+Result → false
+✅ Output
+false
+🔹 console.log(data == data1);
+data == data1
+
+Both variables refer to the same array
+Same memory address
+Result → true
+✅ Output
+true
+        */
+    </script> -->
+
+    
+</head>
+
+<body>
+    <h3>JavaScript Array Methods</h3>
+    <h4>JavaScript Operators</h4>
+    <h5>what spread operator do ?</h5>
+    <p>The spread operator (...) in JavaScript is used to expand (spread out) elements of an array, object, or iterable
+        into individual elements.</p>
+    <code>
+        const arr = [1, 2, 3];
+        const arr2 = [...arr];
+    </code>
+    <ul>
+        What happens?
+        <li>...arr takes each element from arr</li>
+        <li>Creates a new array</li>
+        <li>Copies values one by one</li>
+    </ul>
+    <code>
+        arr   →  1   2   3
+        ...arr → 1 , 2 , 3
+        arr2  → [1, 2, 3] (new memory)
+
+    </code>
+    <p>✅ Important</p>
+    <code>
+        arr === arr2 // false
+    </code>
+    <p>Because the array is copied, not referenced.</p>
+    <p>2️⃣ Spread operator is NOT just copying</p>
+    <ul>
+        <li>Add elements while copying</li>
+    </ul>
+    <code>
+        const arr = [1, 2, 3];
+        const newArr = [0, ...arr, 4];
+    </code>
+    <p>
+        result =[0, 1, 2, 3, 4]
+    </p>
+    <h5>4️⃣ Spread operator with objects</h5>
+    <code>
+        const obj = { name: "Java", version: 21 };
+        const copyObj = { ...obj };
+    </code>
+    <p>Creates a shallow copy of obj.</p>
+    <p>✅ Important</p>
+    <code>
+        obj === copyObj // false
+    </code>
+    <p>Because the object is copied, not referenced.</p>
+    <ul>
+        <li>Creates a new object</li>
+        <li>Copies properties</li>
+    </ul>
+    <h5>5️⃣ Override / add properties in objects</h5>
+    <code>
+        const obj = { a: 1, b: 2 };
+        const newObj = { ...obj, b: 10, c: 3 };
+    </code>
+    <ol><li>
+        { a: 1, b: 10, c: 3 }
+    </li></ol>
+    <h5>Spread works on iterables</h5>
+    <ul>
+        <li>Arrays ✅</li>
+        <li>Strings ✅</li>
+        <li>Sets ✅</li>
+        <li>Maps (keys/values) ✅</li>
+    </ul>
+    <h4>JavaScript Functions</h4>
+</body>
+
+</html>

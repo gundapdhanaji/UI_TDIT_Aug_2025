@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions in JS</title>
+    <script>
+        function addition(a,b) {
+            console.log("before the return statement")
+
+            return a + b;
+            console.log("after the return statement") // this line will never execute
+        }
+
+        let result = addition(5,3);
+        // alert("The result is: " + result);
+        console.log("The result is: " + result);
+    
+        //we can call before defining the function because of hoisting
+        multiplication(10,2);
+        function multiplication(a,b) {
+            console.log("Multiplying " + a + " and " + b + " is "+ a*b);
+        }
+        //but we cannot call function expressions before defining them
+        // division(20,4);
+        //Uncaught ReferenceError: Cannot access 'division' before initialization
+        const division = function(a,b) {
+            console.log("Dividing " + a + " and " + b + " is "+ a/b);
+        }
+        division(20,4);
+        //Immediately Invoked Function Expression (IIFE)
+        (function showResult(){
+            alert("This is an IIFE function")
+        });
+
+        const numData = function(){
+            const sum = function (a,b) {
+                return a + b;
+            }
+            return alert(sum(10,20));
+        }
+        // numData();
+        // console.log(numData())
+
+        function printAllRecords(arr) {
+            for(let i=0; i< arr.length; i++) {
+                console.log("Record " + (i+1) + ": " + arr[i]);
+            }
+        }
+        
+        let  numArr = [10,20,30,40,50];
+        printAllRecords(numArr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
