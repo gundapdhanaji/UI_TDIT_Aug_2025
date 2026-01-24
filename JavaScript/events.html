@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Events in JS</h4>
+    <p>Interaction with html means event in JS and some action perform</p>
+    <!-- <button onclick="this.style.color ='red'">Click Me</button>
+    <button onclick="changeTextt()">Click Me Too</button>
+    <button onmouseover="this.style.backgroundColor='yellow'" onmouseout="this.style.backgroundColor='purple'" onmouseleave="this.style.color='red'">onmouseover and onmouseout</button>
+     -->
+    <button id="buttonTest" onclick="changeTextColor(), changeTexFontSize()">Onclick Event</button>
+    <script>
+        // function changeTextt(){
+        //     console.log("onclick it is showing the text")
+        // }
+
+        function changeTexFontSize(){
+            let test = document.getElementById("buttonTest");
+            test.style.fontSize = "30px";
+        }
+
+
+        function changeTextColor(){
+            let test = document.getElementById("buttonTest");
+            test.style.color = "red";
+        }
+    </script>
+
+</body>
+</html>

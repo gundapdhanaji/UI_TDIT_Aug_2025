@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operators question</title>
+</head>
+
+<body>
+    <h3># Operators</h3>
+
+    <h4 style="color: red;">
+        Q.1 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        console.log(isNaN(true)); // false isNaN converts true to 1, and 1 is a number
+        here isNaN() function checks whether the value is NaN (Not a Number ) or not. Since true is converted to 1, which is a valid number, 
+        isNaN(1) returns false
+    </pre>
+    <script>
+        console.log(isNaN(true)); // false isNaN converts true to 1, and 1 is a number
+    </script>
+
+    <h4 style="color: red;">
+        Q.2 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        console.log(0.1 + 0.2 == 0.3); // false
+        🔍 Why this happens
+        JavaScript uses IEEE-754 double-precision floating-point numbers (same as Java, C, Python).
+        Some decimal numbers cannot be represented exactly in binary.
+        What really happens internally
+        0.1  → 0.10000000000000000555...
+        0.2  → 0.20000000000000001110...
+        0.1 + 0.2 → 0.30000000000000004441...
+        So, when you compare 0.1 + 0.2 with 0.3, they are not exactly equal due to these tiny precision errors. 
+    </pre>
+    <script>
+        console.log(0.1 + 0.2);// 0.30000000000000004
+        console.log(0.1 + 0.2 == 0.3); // false
+    </script>
+    <h4 style="color: red;">
+        Q.3 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        console.log(false == "0"); 
+        console.log(false === "0");
+
+    1️⃣ false == "0" → true
+    == is the loose equality operator
+    👉 It converts types before comparing.
+    What happens step by step:
+    "0" (string) → converted to number → 0
+    false → converted to number → 0
+    Compare: 0 == 0 → true
+    So:
+        false == "0" // true
+    2️⃣ false === "0" → false
+    === is the strict equality operator
+    👉 No type conversion
+    false → boolean
+    "0" → string
+    Different types ❌ → comparison fails.
+    so:
+        false === "0" // false  
+    
+    🔑 One-line rule to remember
+    == → converts types
+    === → compares value + type    
+    </pre>
+
+    <h4 style="color: red;">
+        Q.4 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        console.log(0.1 + 0.2); 
+        console.log(0.1 + 0.2 == 0.3); 
+    </pre>
+
+    <h4 style="color: red;">
+        Q.5 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        var x = 10;
+        if (x) {
+              let x = 4;
+        }
+        console.log(x); // 10 because the x inside the if block of code  is a different variable due to block
+        we are printing x in console which is declared outside the if block  
+    </pre>
+
+    <h4 style="color: red;">
+        Q.6 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        const numOne = 2;
+        const numTwo = 3;
+        const res = numOne ** numTwo;
+        console.log(res); // 8 because ** is exponentiation operator 2 raised to the power 3 = 8
+    </pre>
+    <script>
+        const numOne = 2;
+        const numTwo = 3;
+        const res = numOne ** numTwo;
+        console.log(res); // 8 because ** is exponentiation operator 2 raised to the power 3 = 8
+    </script>
+    <h4 style="color: red;">
+        Q.7 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        let number = 0;
+        console.log(number++); // 0 Post-increment: returns/assigns the value before incrementing
+        console.log(++number);// 2 Pre-increment: increments first, then returns/assigns  the value
+        console.log(number); // 2 final value of number after both increments
+    </pre>
+    <script>
+        let number = 0;
+        console.log(number++);
+        console.log(++number);
+        console.log(number);
+    </script>
+    <h4 style="color: red;">
+        Q.8 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        let num = 10;
+        const increaseNumber = () => num++; // here num is 10 ,after this line num becomes 11
+        const increasePassedNumber = (number) => number++; // here number is 10 , after this line number becomes 11 but it is local to function
+        const num1 = increaseNumber(); // num1 is 10 now
+        const num2 = increasePassedNumber(num1); //num2 is 10 now
+        console.log(num1); // 10
+        console.log(num2); // 10
+    </pre>
+    <pre style="color: rebeccapurple;">
+        1️⃣ Can arrow function access let variable?
+        yes, arrow functions can access variables declared with let in their enclosing scope.
+        In this case, increaseNumber accesses and modifies the num variable declared outside its scope.
+        const increaseNumber = () => num++;
+        num is declared in the outer scope
+        The arrow function forms a closure
+        So it can read and modify num directly.
+        This is called lexical scoping.
+        So this works:
+        const increaseNumber = () => num++; //// modifies outer variable
+        2️⃣ What are the actual values?
+        Initially:
+        num = 10
+        After calling increaseNumber():
+        increaseNumber() does num++ which returns 10 (post-increment) and then increments num to 11.
+        increasePassedNumber(num1)
+        const num2 = increasePassedNumber(num1);
+        inside
+                number++   // post-increment on local copy
+        number gets value 10
+        Returns 10
+        Local number becomes 11 (but discarded)
+        2️⃣ Why num1 is NOT changed in second function?
+        👉 JavaScript passes primitive values by value
+        number = num1;  // copy
+        So modifying number inside increasePassedNumber does NOT affect num1.
+        3️⃣ Key concepts (interview points)
+        | Concept        | Explanation                           |
+        | -------------- | ------------------------------------- |
+        | Lexical scope  | Inner function can access outer `let` |
+        | Closure        | Function remembers outer variables    |
+        | Post-increment | Returns old value, then increments    |
+        | Pass by value  | Primitives are copied                 |
+
+    </pre>
+    <script>
+        let num = 10;
+        const increaseNumber = () => num++;
+        const increasePassedNumber = (number) => number++;
+        const num1 = increaseNumber();
+        const num2 = increasePassedNumber(num1);
+        console.log(num1); // 10
+        console.log(num2); // undefined
+    </script>
+
+    <h4 style="color: red;">
+        Q.9 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        +true; 
+        The unary plus tries to convert an operand to a number. true is 1, and false is 0.
+        !"Mala Pall";
+        The string 'Mala Pall' is a truthy value. What we're actually asking, is "is this truthy value falsy?". This returns false
+    </pre>
+
+    <h4 style="color: red;">
+        Q.10 Predict the output of the following JavaScript code?
+    </h4>
+    <pre style="color: rebeccapurple;">
+    let a = 3;
+    let b = new Number(3);
+    let c = 3;
+    console.log(a == b); // true it converts types before comparing 
+    // a is primitive number 3 and b is object type with value 3 so it converts b to primitive type before comparing 
+    // calls b.valueOf() which returns primitive value 3 so 3 == 3 true
+
+    console.log(a === b); // false so both value are same but types are different
+    What === actually checks
+    === compares value AND type
+    ❌ No type conversion
+    ❌ No unwrapping
+    console.log(b === c); // false it compares object type with primitive type
+    </pre>
+    <script>
+        let a = 3;
+        let b = new Number(3);
+        let c = 3;
+        console.log("10 question output ")
+        console.log(typeof a); // number
+        console.log(typeof b); // object
+        console.log(a == b);
+        console.log(a === b);
+        console.log(b === c);
+    </script>
+    <h4 style="color: red;">
+        Q.11 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+        console.log(typeof typeof 1); // string
+        step 1: typeof 1 → "number" (typeof always returns a string)
+        (typeof number) → "string"
+    </pre>
+
+    <h4 style="color: red;">
+        Q.12 Which of these values are falsy?
+    </h4>
+    <pre>
+        0; // falsy
+        new Number(0); // truthy because it's an object
+        ("");// falsy 
+        (" ");// truthy because it contains a space character
+        null; // falsy
+        new Boolean(false); // truthy because it's an object
+        undefined; // falsy because it represents absence of value
+        Nan; // falsy because it represents Not a Number
+    </pre>
+    <script>
+        console.log("Q.12 output")
+        console.log(Boolean(0)); // false
+        console.log(Boolean(new Number(0))); // true
+        console.log(Boolean("")); // false
+        console.log(Boolean(" ")); // true
+        console.log(Boolean(null)); // false
+        console.log(Boolean(new Boolean(false))); // true
+        console.log(Boolean(undefined)); // false
+        console.log(Boolean(NaN)); // false
+    </script>
+    <h4 style="color: red;">
+        Q.13 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+
+    </pre>
+
+    <h4 style="color: red;">
+        Q.14 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+
+    </pre>
+
+    <h4 style="color: red;">
+        Q.15 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+
+    </pre>
+
+    <h4 style="color: red;">
+        Q.16 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+
+    </pre>
+
+    <h4 style="color: red;">
+        Q.17 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+
+    </pre>
+</body>
+
+</html>

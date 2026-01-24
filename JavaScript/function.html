@@ -50,9 +50,107 @@
         
         let  numArr = [10,20,30,40,50];
         printAllRecords(numArr);
-    </script>
+
+        //Arrow Functions
+        const demo = () =>{
+            console.log("inside the arrow function")
+        }
+        demo();
+
+        // const obj = {
+        //     name: "Ganesh",
+        //     printName:function(){
+        //         console.log(this.name)
+        //     }
+        // }
+        const obj = {
+            name: "Ganesh",
+            printName: () => {
+                console.log(this.name) //arrow fun does not support 'this' keyword
+            }
+        }
+        obj.printName();
+
+        const dataObj = {
+            name: "Dhanaji",
+            mobile: 1234567890,
+            printData:function(){
+                console.log(this.name + " : " + this.mobile)
+            }
+        }
+        dataObj.printData();
+
+        //call
+        const personData = {
+            fullData : function(city, country) {
+                console.log(this.name + " "+ this.mobile + " "+city+" " +country);
+            },
+             fullData1 : function(city, country) {
+                console.log(this.name + " "+ this.mobile + " "+city+" " +country);
+            }
+        }
+        const person1 = {
+            name: "Alice",
+            mobile: 9876543210
+        }
+
+        const person2 = {
+            name: "Bob",
+            mobile: 8765432109
+        }
+
+        personData.fullData.call(person1,"pune", "India"); //use call method
+        personData.fullData1.apply(person2, ["mumbai", "India"]); //use apply method
+        let personResult = personData.fullData.bind(person1, "delhi", "India"); //use bind method
+
+        personResult(); //calling the bound function
+
+        //Closure in JS
+        //Function inside a function and inner function has access to outer function variables and its lexical scope
+        //closure is created when function remembers and accesses variables from outside its own scope
+
+        function outer(){
+            let count = 0;
+            function inner(){
+                count ++;
+                console.log("Count value: " + count);
+            }
+            return inner;
+        }
+        console.log("Demonstrating Closure: ");
+        const functionClosure = outer(); //outer function executed
+        functionClosure(); //inner function called
+        functionClosure(); 
+        functionClosure(); 
+        console.log("===============================");
+
+        // for(var i=0; i<=3; i++){
+        //     (function(i){
+        //         setTimeout(() => {
+        //             console.log(i)
+        //         }, 1000);
+        //     })(i);
+        // }
+        console.log("Currying in JS")
+        //currying function in JS
+        function one(a){
+            return function two(b){
+                return function three(c){
+                    console.log(a, b, c);
+                }
+            }
+        }
+        one()(10)(15);
+        
+
+</script>
 </head>
 <body>
-    
+        <ul>
+            <li>Arrow Functions</li>
+            <li>Call, Apply, Bind</li>
+            <li>Closure in JS</li>
+            <li></li>
+        </ul>    
 </body>
 </html>

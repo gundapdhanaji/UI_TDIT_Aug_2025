@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Coding Practise</title>
+</head>
+
+<body>
+    <ul>
+        <li>Variables</li>
+        <li>Operators</li>
+        <li>Numbers</li>
+        <li>Strings</li>
+        <li>Arrays</li>
+        <li>Functions</li>
+        <li>Objects</li>
+    </ul>
+
+    <h3># Variables</h3>
+    <h4 style="color: red;">Q.1 Predict the output of the following JavaScript code?</h4>
+    <pre>
+    var g = 0;
+    g = 1 && g++;
+    console.log(g);// false 
+</pre>
+    <pre>
+    1️⃣ How && works in JavaScript
+    && does NOT return true or false always.
+    👉 It returns:
+    the first falsy value, OR
+    the last truthy value
+    Examples:
+    1 && 5     // 5
+    0 && 5     // 0
+    true && 10 // 10
+    false && 10 // false
+    "hello" && 20 // 20
+ </pre>
+    <h4 style="color: red;">Q.2 What would be the output of following code?</h4>
+    <pre>
+    console.log(employeeId); // Output: undefined
+    var employeeId = "19000";
+    because variable declarations (using var) are hoisted to the top of their scope during compilation
+    so it gives undefined instead of ReferenceError
+</pre>
+    <h4 style="color: red;">Q.3 console.log(employeeId);</h4>
+    <pre>
+    console.log(employeeId); // ReferenceError employeeId is not defined
+    It gives ReferenceError because it is not declared yet.
+</pre>
+    <h4 style="color: rebeccapurple;">
+        🔴 Why execution stops after ReferenceError
+        JavaScript execution rule (very important)<br>
+        👉 If a runtime error occurs, JavaScript immediately stops executing the rest of the script.
+        A ReferenceError is a runtime error, not a warning.</h4>
+    <h4 style="color: red;">
+        Q.4 Predict the output of the following JavaScript code?
+    </h4>
+    <pre>
+    const a = { msg: "Hi" };
+    const b = a; // b references the same object as a
+    b.msg = "Hello";// modifying the object via b so a.msg is also changed due to call by reference
+    console.log(a, b); // { msg: "Hello" } { msg: "Hello" } 
+</pre>
+    <h4 style="color: red;">
+        Q.5 What is the output?
+    </h4>
+
+    <pre>
+    var a = 1.2;
+    console.log(typeof a); // number
+    because in JavaScript, both integers and floating-point numbers are represented using the same data type called "number".
+</pre>
+    <h4 style="color: red;">
+        Q.6 What is the output?
+    </h4>
+    <pre>
+        let text = "hello";
+        let text = "hello world";
+        console.log(text); // SyntaxError: Identifier 'text' has already been declared
+        because in JavaScript, you cannot redeclare a variable using let or const within the same scope.
+        </pre>
+    <h4 style="color: red;">
+        Q.7 What is the output?
+    </h4>
+    <pre>
+        const text = "hi";
+        text = "hello ";
+        console.log(text); // TypeError: Assignment to constant variable.
+        because in JavaScript, you cannot redeclare a variable using let or const within the same scope.
+        </pre>
+    <h4 style="color: red;">
+        Q.8 What is the output?
+    </h4>
+    <pre>
+        console.log('The value of num is: ' + num); // uncaught ReferenceError: num is not defined
+    </pre>
+    <p style="color: rebeccapurple;">
+        🔴 Explanation:
+        In JavaScript, variable declarations using var are hoisted to the top of their scope during compilation.</br>
+        so when you try to access the variable before its declaration, it results in undefined.</br>
+        num is not defined so it gives ReferenceError.<br>
+        In case of let and const, accessing the variable before its declaration results in a ReferenceError due to the
+        temporal dead zone (TDZ).
+    </p>
+    <h4 style="color: red;">
+        Q.9 What is the output?
+    </h4>
+    <pre>
+        console.log(num); // Uncaught ReferenceError: Cannot access 'num' before initialization
+        const num = 10; 
+    </pre>
+    <h4 style="color: red;">
+        Q.10 What is the output?
+    </h4>
+    <pre>
+        var num = 8;
+        var num = 10;
+        console.log(num); // 10 because var gets latest value assigned to it. and var allows redeclaration & reassignment.
+    </pre>
+    <h4 style="color: red;">
+        Q.11 What is the output?
+    </h4>
+    <pre>
+        const name = "Swarna";
+              age = 21;
+        console.log(delete name); // false because variables declared with const,var,let cannot be deleted 
+        console.log(delete age); // true because age is created as a property of the global object
+    </pre>
+    <pre style="color: rebeccapurple;">
+        🔑 What delete really does
+
+        👉 delete removes object properties,
+        ❌ it does NOT delete:
+
+        variables declared with var, let, or const
+
+        function declarations
+        1️⃣ delete name → ❌ false
+        const name = "Swarna";
+        name is a block-scoped variable
+
+        Declared using const
+
+        Variables created with const, let, or var are non-configurable
+        2️⃣ delete age → ✅ true
+        age = 21; // creates a property on the global object
+    </pre>
+    
+    <h4 style="color: red;">
+        Q.12 What is the output?
+    </h4>
+    <pre>
+       const name1 = "Akhil Sunder";
+        console.log(name1.length) // 12
+        console.log(name1.padStart(13)); //output " Akhil Sunder"  returns new String with total length 13 by adding one space at start
+        const name2 = name1.padStart(13);
+        console.log("new String after padStart(13)"+name2.length) //13
+        console.log(name2)  //output " Akhil Sunder"
+        console.log("total length after adding padding at start "+name1.length) //12  because original string is not changed
+        console.log(name1.padStart(2));
+        const name3 = name1.padStart(2);
+        console.log("after adding padStart(2)"+name3);
+        console.log(name1.length)
+
+        🔑 Rule of padStart (the golden rule)
+
+        padStart(targetLength)
+        ONLY pads if targetLength > originalString.length
+
+        Step-by-step execution
+        1️⃣ name1.padStart(2)
+        Original length = 12
+        Target length = 2
+        👉 No padding is added
+        So JavaScript simply returns:
+        "Akhil Sunder"
+        2️⃣ Assigning to name3
+        const name3 = name1.padStart(2);
+        padStart(2) returns the same string content
+        name3 now stores "Akhil Sunder"
+
+    </pre>
+    <script>
+        console.log("====== padStart method ========")
+        const name1 = "Akhil Sunder";
+        console.log(name1.length) // 12
+        console.log(name1.padStart(13)); //output " Akhil Sunder"  returns new String with total length 13 by adding one space at start
+        const name2 = name1.padStart(13);
+        console.log("new String after padStart(13)"+name2.length) //13
+        console.log(name2)  //output " Akhil Sunder"
+        console.log("total length after adding padding at start "+name1.length) //12  because original string is not changed
+        console.log(name1.padStart(2));
+        const name3 = name1.padStart(2);
+        console.log("after adding padStart(2)"+name3);
+        console.log(name1.length)
+    </script>
+    <h4 style="color: red;">
+        Q.13 What is the output?
+    </h4>
+    <pre>
+        console.log(String.raw`Hello\nworld`); // Hello\nworld
+
+        🔍 What String.raw does (in simple words)
+        String.raw returns a raw string
+        👉 Escape sequences are NOT processed
+    So:
+        \n is not treated as a newline character
+    It stays as two characters: \ and n
+    🔑 Why String.raw exists
+
+It’s useful when you want:
+    Regular expressions
+    File paths
+    Debugging strings
+    Copy-paste safe strings
+Example:
+    String.raw`C:\new\test\file.txt`
+    Without String.raw, \n and \t would break the string.
+    </pre>
+    <script>
+        console.log(String.raw`Hello\nworld`);
+    </script>
+    <h4 style="color: red;">
+        Q.14 What is the output?
+    </h4>
+    <pre>
+        const { name: myName } = { name: "Anusha Kapadia" };
+        console.log(name);
+        When we unpack the property name from the object on the right-hand side, we assign its value "Anusha Kapadia" to a variable with the name myName.
+        With { name: myName }, we tell JavaScript that we want to create a new variable called myName with the value of the name property on the right-hand side.
+        Since we try to log name, a variable that is not defined, a ReferenceError gets thrown.
+    </pre>
+    
+    <h4 style="color: red;">
+        Q.15 What is the output?
+    </h4>
+    <pre>
+        const name = "Anima Nagarajan";
+        console.log(name()); // Uncaught TypeError: name4 is not a function 
+        Here, name is a string variable, not a function. Attempting to call it as a function results in a TypeError.
+    </pre>
+    <script>
+        const name4 = "Anima Nagarajan";
+        console.log("15 question output "+ name4());
+        console.log("========= checkig output after Error ======== ");
+    </script>
+    
+    <h4 style="color: red;">
+        Q.16 What is the output?
+    </h4>
+    <pre>
+        const num = 10;
+        console.log(Num); // Uncaught ReferenceError: Num is not defined
+        JavaScript is case-sensitive, so num and Num are treated as different identifiers. Since Num is not defined, it results in a ReferenceError.
+    </pre>
+    
+
+</body>
+
+</html>
